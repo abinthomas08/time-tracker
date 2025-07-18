@@ -19,7 +19,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: '17'
-        distribution: 'temurin'  # or 'zulu', 'adopt', etc.
+        distribution: 'temurin'
 
     - name: Cache Maven dependencies
       uses: actions/cache@v4
@@ -34,3 +34,9 @@ jobs:
 
     - name: Run Tests
       run: mvn test
+
+    - name: Upload JAR Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: time-tracker-jar
+        path: target/*.jar
